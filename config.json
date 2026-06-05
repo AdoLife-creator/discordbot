@@ -1,0 +1,22 @@
+// Railway'de Environment Variables'dan okur
+// Localda config.json'dan okur (opsiyonel fallback)
+
+let localConfig = {};
+try {
+  localConfig = require('./config.json');
+} catch {
+  // config.json yoksa (Railway'de normal)
+}
+
+module.exports = {
+  token:           process.env.TOKEN            || localConfig.token,
+  clientId:        process.env.CLIENT_ID        || localConfig.clientId,
+  guildId:         process.env.GUILD_ID         || localConfig.guildId,
+  yetkiliRolId:    process.env.YETKILI_ROL_ID   || localConfig.yetkiliRolId   || null,
+  ticketKategoriId:process.env.TICKET_KATEGORI_ID|| localConfig.ticketKategoriId|| null,
+  logKanalId:      process.env.LOG_KANAL_ID     || localConfig.logKanalId     || null,
+  bannerUrl:       process.env.BANNER_URL        || localConfig.bannerUrl      || null,
+  botName:         process.env.BOT_NAME         || localConfig.botName        || 'Ares Project | Bot',
+  version:         process.env.VERSION          || localConfig.version        || 'v0.0.1',
+  developer:       process.env.DEVELOPER        || localConfig.developer      || 'AdoLife',
+};
